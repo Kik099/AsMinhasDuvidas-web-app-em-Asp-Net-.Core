@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-AsMinhasDuvidas-CEBB5A6F-D58F-4E46-857A-3C10A04FE81B</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="app.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Quartz" Version="3.1.0" />
+    <PackageReference Include="Moq" Version="4.14.7" />
+    <PackageReference Include="MailKit" Version="2.10.0" />
+    <PackageReference Include="MimeKit" Version="2.10.1" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Pages\Duvidas\" />
+    <Folder Include="Pages\Shared\imagens\" />
+    <Folder Include="Funcoes\" />
+    <Folder Include="wwwroot\css\imagens\" />
+    <Folder Include="ScheduledTasks\" />
+    <Folder Include="wwwroot\css\boostrap\" />
+    <Folder Include="wwwroot\js\boostrap\" />
+    <Folder Include="Pages\ApoioProfessor\" />
+    <Folder Include="Pages\ApoioAluno\" />
+    <Folder Include="Pages\Foruns\" />
+    <Folder Include="Pages\Foruns\Posts\" />
+    <Folder Include="Pages\ApoioAdmin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Models\Edit.cshtml" />
+    <Content Remove="Pages\Professores %28copy%29\CreateCurso.cshtml" />
+    <Content Remove="Pages\ApoioProfessor\CreateCurso.cshtml" />
+    <Content Remove="Pages\ApoioProfessor %28copy%29\CreateCurso.cshtml" />
+  </ItemGroup>
+</Project>

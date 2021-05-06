@@ -1,0 +1,128 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AsMinhasDuvidas.Areas.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject AsMinhasDuvidas.Data.ApplicationDbContext _context
+@inject RoleManager<IdentityRole> roleManager
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral" />
+<link href="~/css/menu.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
+<style>
+    body {
+        margin: 0;
+        background: rgba(0,0,0,0);
+    }
+
+    #menuDemo {
+        text-align: center;
+        padding: 30px 8px;
+    }
+
+    .menu-icon {
+        background-color: transparent;
+    }
+
+        .menu-icon:hover {
+            border-width: 3px;
+            border-color: black;
+        }
+</style>
+<header class="u-clearfix u-header u-header row" id="sec-be48">
+    <div class=" u-clearfix u-sheet u-sheet-1 border-bottom box-shadow mb-3">
+
+        <div id="menuDemo menu-collapse" ">
+
+            <!--start CssMenu-->
+            <div class="menu-icon-wrapper" style="width:100%;">
+                <div class="menu-icon" onclick="toggleCssMenu(this)" >
+                    <div class="three-line">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="menu-logo">
+                    
+                    <a  class="u-image u-logo u-image-1" data-image-width="820" data-image-height="527" asp-area="" asp-page="/Index">
+                        <img src="~/css/imagens/logo-2.png" class="u-logo-image u-logo-image-1" data-image-width="64" style="margin-bottom: 10px;">
+                    </a>
+
+                </div>
+
+            </div>
+            <div id="cssmenu">
+                <ul>
+
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a>Bem vindo @User.Identity.Name</a></li>
+                        <li><a asp-area="" asp-page="/Index">Início</a></li>
+
+                        if (_context.UserRoles.Where(S => S.UserId ==
+                         (_context.Users.Where(S => S.UserName == User.Identity.Name).First().Id) && S.RoleId ==
+                         _context.Roles.Where(S => S.Name == "admin").First().Id).Count() > 0)
+                        {
+                            <li><a href="~/ApoioAdmin">Apoio ao Admin</a></li>
+
+                        }
+                        else if (_context.UserRoles.Where(S => S.UserId ==
+                       (_context.Users.Where(S => S.UserName == User.Identity.Name).First().Id) && S.RoleId ==
+                       _context.Roles.Where(S => S.Name == "professor").First().Id).Count() > 0)
+                        {
+                            <li><a href="~/ApoioProfessor">Apoio ao Professor</a></li>
+                            <li><a href="~/Duvidas">Dúvidas</a></li>
+
+                        }
+                        else
+                        {
+                            <li><a href="~/ApoioAluno">Apoio ao Aluno</a></li>
+                            <li><a href="~/Duvidas">Dúvidas</a></li>
+                        }
+
+                        <li><a href="~/Foruns">Fórum</a></li>
+                        <li class="nav-item">
+                            <a asp-area="Identity" asp-page="/Account/Logout" class="nav-link text-dark">Logout</a>
+
+                        </li>
+
+
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-page="/Index">Início</a></li>
+
+                        <li><a href="~/Foruns">Fórum</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+
+                    }
+                </ul>
+
+            </div>
+            <script>function toggleCssMenu(icon) {
+                    var cssmenu = document.getElementById('cssmenu');
+                    if (icon.className.indexOf('active') == -1) {
+                        icon.className = 'menu-icon active';
+                        cssmenu.style.display = "block";
+                        setTimeout(function () { cssmenu.className = 'active'; }, 0);
+                    }
+                    else {
+                        icon.className = 'menu-icon';
+                        cssmenu.className = '';
+                        setTimeout(function () { cssmenu.style.display = "none"; }, 411);
+                    }
+                }</script>
+            <!--end CssMenu-->
+
+        </div>
+
+
+
+    </div>
+
+</header>

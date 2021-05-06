@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AsMinhasDuvidas.Areas.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject AsMinhasDuvidas.Data.ApplicationDbContext _context
+@inject RoleManager<IdentityRole> roleManager
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral" />
+<link href="~/css/site.css" rel="stylesheet" />
+<link href="~/css/menu2.css" rel="stylesheet" />
+<style>
+    body {
+        margin: 0;
+        background: rgba(0,0,0,0);
+    }
+
+    #menuDemo {
+        text-align: center;
+        padding: 30px 8px;
+    }
+
+    .menu-icon {
+        background-color: transparent;
+    }
+
+        .menu-icon:hover {
+            border-width: 3px;
+            border-color: black;
+        }
+</style>
+
+<header class="u-clearfix u-header u-header row" id="sec-be48">
+    <div class=" u-clearfix u-sheet u-sheet-1 border-bottom box-shadow mb-3">
+
+        <div id="menuDemo menu-collapse" ">
+
+            <!--start CssMenu-->
+            <div class="menu-icon-wrapper" style="width:100%;">
+              
+                <div class="menu-logo">
+                    <div class="u-layout-row">
+                        <a href="/" class="menu-icon">Início</a>
+                        
+                        <a class="u-image u-logo u-image-1" data-image-width="820" data-image-height="527" asp-area="" asp-page="/Index">
+                            <img src="~/css/imagens/logo-2.png" class="u-logo-image u-logo-image-1" data-image-width="64" style="margin-bottom: 10px;">
+                        </a>
+                    </div>
+                  
+
+                </div>
+               
+            </div>
+            
+
+        </div>
+
+
+
+    </div>
+
+</header>
+

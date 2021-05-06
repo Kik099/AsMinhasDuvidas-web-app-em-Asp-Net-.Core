@@ -1,0 +1,58 @@
+@page "{id}"
+@model AsMinhasDuvidas.Pages.Foruns.Posts.CreateModel
+
+@inject AsMinhasDuvidas.Data.ApplicationDbContext DB
+@{ Layout = "~/Pages/Shared/_Layout2.cshtml"; }
+
+<link rel="stylesheet" href="~/css/CriarPost.css" />
+<section class="u-clearfix u-image u-shading u-section-1" id="carousel_ce9d" data-image-width="1980" data-image-height="1320">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+            <div class="u-gutter-0 u-layout">
+                <div class="u-layout-row">
+                    <div class="u-align-left u-container-style  u-size-34 u-layout-cell-1" style="background-color: #478ac9;">
+                        <div class="u-container-layout u-valign-top u-container-layout-1">
+                            <h2 class="u-custom-font u-font-oswald u-text u-text-body-alt-color u-text-1">Responder</h2>
+                            <div class="u-border-5 u-border-palette-2-base u-line u-line-horizontal u-line-1"></div>
+                            <div class="u-form u-form-1">
+                                <form method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 0;">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="u-form-group u-form-message">
+                                        <label for="message-8db6" class="u-form-control-hidden u-label">Message</label>
+                                        <textarea placeholder="Escrever resposta" asp-for="Post.conteudo" rows="10" cols="50" class="u-input u-input-rectangle u-white" required=""></textarea>
+                                        <span asp-validation-for="Post.conteudo" class="text-danger"></span>
+                                    </div>
+                                    <div class="u-form-group u-form-submit">
+                                        <button type="submit" class="u-btn u-btn-rectangle u-btn-submit u-button-style u-palette-2-base u-btn-1">
+                                            Criar<br>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="u-align-left u-container-style u-layout-cell u-size-26 u-white u-layout-cell-2">
+                   
+                        @foreach (var item in Model.Forum)
+                        {
+                            var titulo = item.Titulo;
+                            if (item.Aberto == false) { titulo += "[Fechado]"; }
+                            <div class="u-container-layout u-container-layout-2">
+                                <h5 class="u-text u-text-2">@titulo</h5>
+                                <p class="u-custom-font u-font-arial u-text u-text-grey-50 u-text-3">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                                <p class="u-text u-text-grey-50 u-text-4">
+                                    @DB.Users.Where(s => s.Id == item.UserID).First().UserName @Html.DisplayFor(modelItem => item.data.Date)<br>
+                                </p>
+                            </div>
+                         }
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

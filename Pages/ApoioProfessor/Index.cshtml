@@ -1,0 +1,465 @@
+@page
+@model AsMinhasDuvidas.Pages.ApoioProfessor.IndexModel
+
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout2.cshtml";}
+
+<link rel="stylesheet" href="~/css/Professores.css" />
+
+<link rel="stylesheet" href="~/css/nicepage2.css" />
+
+<link rel="stylesheet" href="~/css/nicepage.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+@if (Model.tab == 1)
+{
+<style>
+    .u-section-1 .u-tab-pane-1 {
+        display: flex;
+    }
+
+    .u-section-1 .u-tab-pane-2 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-3 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-4 {
+        display: none;
+    }
+</style>
+}
+@if (Model.tab == 3)
+{
+<style>
+    .u-section-1 .u-tab-pane-1 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-2 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-3 {
+        display: flex;
+    }
+
+    .u-section-1 .u-tab-pane-4 {
+        display: none;
+    }
+</style>
+}
+@if (Model.tab == 2)
+{
+<style>
+    .u-section-1 .u-tab-pane-1 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-2 {
+        display: flex;
+    }
+
+    .u-section-1 .u-tab-pane-3 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-4 {
+        display: none;
+    }
+</style>
+}
+@if (Model.tab == 4)
+{
+
+<style>
+    .u-section-1 .u-tab-pane-1 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-2 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-3 {
+        display: none;
+    }
+
+    .u-section-1 .u-tab-pane-4 {
+        display: flex;
+    }
+</style>}
+
+
+<section class="u-align-center u-clearfix u-section-1" id="carousel_081a">
+    <h2 class="u-custom-font u-font-playfair-display u-text u-text-1">Apoio ao professor</h2>
+    <div class="u-container-style u-expanded-width u-group u-palette-5-dark-1 u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+            <div class="u-expanded-width-xs u-tab-links-align-left u-tabs u-tabs-1">
+                
+                @if (Model.tab == 1)
+                {
+                <ul class="u-spacing-10 u-tab-list u-unstyled" role="tablist">
+                    <li class="u-tab-item u-tab-item-1" role="presentation">
+                        <a onclick="openCity(event, 'Cadeiras')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-1 active">Cadeiras</a>
+                    </li>
+                    <li class="u-tab-item u-tab-item-2" role="presentation">
+                        <a onclick="openCity(event, 'Curso')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-2 ">Cursos</a>
+                    </li>
+                    <li class="u-tab-item u-tab-item-3" role="presentation">
+                        <a onclick="openCity(event, 'Inscrever')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-3">Inscrever</a>
+                    </li>
+                    <li class="u-tab-item u-tab-item-4" role="presentation">
+                        <a onclick="openCity(event, 'Lecciona')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-4 ">Lecciona</a>
+                    </li>
+                </ul>}
+                @if (Model.tab == 2)
+                {
+            <ul class="u-spacing-10 u-tab-list u-unstyled" role="tablist">
+                <li class="u-tab-item u-tab-item-1" role="presentation">
+                    <a onclick="openCity(event, 'Cadeiras')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-1 ">Cadeiras</a>
+                </li>
+                <li class="u-tab-item u-tab-item-2" role="presentation">
+                    <a onclick="openCity(event, 'Curso')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-2 active">Cursos</a>
+                </li>
+                <li class="u-tab-item u-tab-item-3" role="presentation">
+                    <a onclick="openCity(event, 'Inscrever')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-3">Inscrever</a>
+                </li>
+                <li class="u-tab-item u-tab-item-4" role="presentation">
+                    <a onclick="openCity(event, 'Lecciona')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-4 ">Lecciona</a>
+                </li>
+            </ul>}
+                @if (Model.tab == 3)
+                {
+           
+            <ul class="u-spacing-10 u-tab-list u-unstyled" role="tablist">
+                <li class="u-tab-item u-tab-item-1" role="presentation">
+                    <a onclick="openCity(event, 'Cadeiras')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-1 ">Cadeiras</a>
+                </li>
+                <li class="u-tab-item u-tab-item-2" role="presentation">
+                    <a onclick="openCity(event, 'Curso')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-2 ">Cursos</a>
+                </li>
+                <li class="u-tab-item u-tab-item-3" role="presentation">
+                    <a onclick="openCity(event, 'Inscrever')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-3 active">Inscrever</a>
+                </li>
+                <li class="u-tab-item u-tab-item-4" role="presentation">
+                    <a onclick="openCity(event, 'Lecciona')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-4 ">Lecciona</a>
+                </li>
+            </ul>}
+                @if (Model.tab == 4)
+                {
+            <ul class="u-spacing-10 u-tab-list u-unstyled" role="tablist">
+                <li class="u-tab-item u-tab-item-1" role="presentation">
+                    <a onclick="openCity(event, 'Cadeiras')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-1">Cadeiras</a>
+                </li>
+                <li class="u-tab-item u-tab-item-2" role="presentation">
+                    <a onclick="openCity(event, 'Curso')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-2 ">Cursos</a>
+                </li>
+                <li class="u-tab-item u-tab-item-3" role="presentation">
+                    <a onclick="openCity(event, 'Inscrever')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-3">Inscrever</a>
+                </li>
+                <li class="u-tab-item u-tab-item-4" role="presentation">
+                    <a onclick="openCity(event, 'Lecciona')" class="u-active-white u-button-style u-tab-link u-text-active-black u-text-body-alt-color u-tab-link-4 active ">Lecciona</a>
+                </li>
+            </ul>}
+                <div class="u-tab-content">
+                    <div class="tabcontent u-align-left u-container-style u-shape-rectangle  u-tab-pane u-tab-pane-1" id="Cadeiras">
+                        <div class="u-container-layout u-container-layout-2">
+                            <div class="u-border-3 u-border-white u-expanded-width-md u-expanded-width-sm u-line u-line-horizontal u-line-1"></div>
+                            <p class="u-text u-text-2">Secção Cadeira</p>
+                            <p class="u-custom-font u-heading-font u-text u-text-3">
+                                Para encontrar uma cadeira digite o Nome ou o ID do cadeira correspondente. Se desejar procurar as cadei​ras de um curso específico, digite o ID do mesmo. Caso não exista a cadeira que pretende, poderá criar uma cadeira nova selecionando a opção "Criar Cadeira".
+                            </p>
+                            <a asp-page="./Create" class="u-border-2 u-border-white u-btn u-button-style u-none u-text-body-alt-color u-text-hover-white u-btn-1">
+                                Criar cadeira<span style="font-size: 1.25rem;"></span>
+                            </a>
+                            <div class="u-form u-form-1">
+                                <form asp-page="./Index" method="get" class="u-clearfix u-form-horizontal u-form-spacing-12 u-inner-form" style="padding: 5px;" source="custom" name="form">
+                                    <div class="u-form-group u-form-name">
+                                        <input type="number" placeholder="ID Cadeira" name="Sec_Cadeira_ID" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-1">
+                                    </div>
+                                    <div class="u-form-email u-form-group">
+                                        <input type="text" placeholder="Nome Cadeira" name="Sec_Cadeira_Nome" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-2">
+                                    </div>
+                                    <div class="u-form-group u-form-group-3">
+                                        <input type="number" placeholder="ID Curso" name="Sec_Cadeira_IDCurso" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-3">
+                                    </div>
+                                    <div class="u-form-group u-form-submit">
+                                        <button class="u-btn u-btn-submit u-button-style u-btn-2" type="submit">Pesquisar</button>
+
+                                        <input type="submit" name="submit" value="Search" class="u-form-control-hidden">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="u-expanded-width-md u-table u-table-responsive u-table-1">
+                                <table class="table u-table-entity">
+                                    <thead class="u-palette-4-base u-table-header u-table-header-1">
+                                        <tr>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">ID cadeira</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">Nome cadeira</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">ID curso</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">Nome curso</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="u-table-body u-white u-table-body-1">
+                                        @foreach (var item in Model.Cadeiras)
+                                        {
+                            <tr>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.CursoID)
+                                </td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.curso.Name)
+                                </td>
+
+                            </tr>}
+                                    </tbody>
+                                </table>
+                            </div>@{ var prev = !Model.Cadeiras.HasPreviousPage;
+                                var next = !Model.Cadeiras.HasNextPage;
+                                if (next != true)
+                                {
+                    <a asp-route-pageIndex="@(Model.Cadeiras.PageIndex + 1)" asp-route-id="1"
+                       class="btn btn-primary u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-11">Seguinte</a> }
+                else
+                {<a class="btn btn-primary disabled u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-11">Seguinte</a> }
+
+
+                if (prev != true)
+                {
+            <a asp-route-pageIndex="@(Model.Cadeiras.PageIndex - 1)" asp-route-id="1"
+               class="btn btn-primary u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-12">Anterior</a> }
+        else
+        {<a class="btn btn-primary disabled u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-12">Anterior</a> } }
+                        </div>
+                    </div>
+                    <div class="tabcontent u-align-left u-container-style u-shape-rectangle u-tab-pane u-tab-pane-2" id="Curso">
+                        <div class="u-container-layout u-container-layout-3">
+                            <p class="u-text u-text-4">Secção Curso</p>
+                            <div class="u-border-3 u-border-white u-line u-line-horizontal u-line-2"></div>
+                            <p class="u-custom-font u-heading-font u-text u-text-5">
+                                Para encontrar um curso digite o Nome ou o ID do curso correspondente. Caso o curso não exista e deseja criar um novo, selecione a opção <span style="font-weight: 700;">"Criar Curso".</span>
+                            </p>
+                            <div class="u-form u-form-2">
+                                <form asp-page="./Index" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 10px;">
+                                    <div class="u-form-group u-form-name">
+                                        <input type="number" placeholder="ID" name="Sec_Curso_ID" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-4">
+                                    </div>
+                                    <div class="u-form-email u-form-group">
+                                        <input type="text" placeholder="Nome" name="Sec_Curso_Nome" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-5">
+                                    </div>
+                                    <div class="u-form-group u-form-submit">
+                                        <button class="u-btn u-btn-submit u-button-style" type="submit">Pesquisar</button>
+                                        <input type="submit" name="submit" value="Search" class="u-form-control-hidden">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <a asp-page="./CriarCurso" class="u-border-2 u-border-white u-btn u-button-style u-none u-text-hover-white u-text-white u-btn-6">Criar curso</a>
+                            <div class="u-expanded-width-md u-expanded-width-sm u-table u-table-responsive u-table-2">
+
+                                <table class="table u-table-entity">
+                                    <colgroup>
+                                        <col width="50%">
+                                        <col width="50%">
+                                    </colgroup>
+                                    <thead class="u-palette-4-base u-table-header u-table-header-1">
+                                        <tr>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">ID curso</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">Nome curso</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="u-table-body u-white u-table-body-1">
+                                        @foreach (var item in Model.Cursos)
+                                        {
+                            <tr>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                            </tr>}
+                                    </tbody>
+                                </table>
+                            </div>
+                            @{ var prevCurso = !Model.Cursos.HasPreviousPage;
+                                var nextCurso = !Model.Cursos.HasNextPage;
+                                if (nextCurso != true)
+                                {
+                    <a asp-route-pageIndex="@(Model.Cursos.PageIndex + 1)" asp-route-id="2"
+                       class="btn btn-primary u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-11">Seguinte</a> }
+                else
+                {<a class="btn btn-primary disabled u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-11">Seguinte</a> }
+
+
+                if (prevCurso != true)
+                {
+            <a asp-route-pageIndex="@(Model.Cursos.PageIndex - 1)" asp-route-id="2"
+               class="btn btn-primary u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-12">Anterior</a> }
+        else
+        {<a class="btn btn-primary disabled u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-12">Anterior</a> } }
+                        </div>
+                    </div>
+                    <div class="tabcontent u-align-left u-container-style u-shape-rectangle u-tab-pane u-tab-pane-3" id="Inscrever">
+                        <div class="u-container-layout u-container-layout-4">
+                            <div class="u-border-3 u-border-white u-expanded-width-sm u-expanded-width-xs u-line u-line-horizontal u-line-3"></div>
+                            <p class="u-text u-text-6">Secção Inscrever</p>
+                            <p class="u-custom-font u-heading-font u-text u-text-white u-text-7">Para tirar dúvidas aos alunos numa cadeira precisa de se inscrever na cadeira correspondente,&nbsp; para isso escolha o curso e de seguida a cadeira que lecciona.</p>
+                            <p class="alert alert-danger">@TempData["erro"] </p>
+                            <div class="u-form u-form-3">
+                                <form method="post" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                                    <div class="u-form-group u-form-select u-form-group-3">
+                                        <label class="u-label">Cursos</label>
+                                        <div class="u-form-select-wrapper">
+                                            <select asp-for="Id" asp-items="ViewBag.Cursos" class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" size="2" required="required">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="u-align-left u-form-group u-form-submit">
+                                        <button type="submit" asp-page-handler="curso" class="u-btn u-btn-submit u-button-style">
+                                           Procurar cadeiras
+                                        </button>
+                                    </div>
+                                    
+
+                                </form>
+                                <form method="post" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="u-form-group u-form-select u-form-group-3">
+                                        <label class="u-label">Cadeira</label>
+                                        <div class="u-form-select-wrapper">
+                                            <select asp-for="Mat.CadeiraID" asp-items="ViewBag.Cadeiras" class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" size="2" required="required">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="u-align-left u-form-group u-form-submit">
+                                        <button class="u-btn u-btn-submit u-button-style" type="submit">Leccionar</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabcontent u-align-left u-container-style u-shape-rectangle u-tab-pane u-tab-pane-4" id="Lecciona">
+                        <div class="u-container-layout u-container-layout-5">
+                            <div class="u-border-3 u-border-white u-expanded-width-md u-expanded-width-sm u-line u-line-horizontal u-line-4"></div>
+                            <p class="u-text u-text-8">Secção lecciona</p>
+                            <p class="u-custom-font u-heading-font u-text u-text-9">
+                                Nesta secção aparecem as cadeiras que o docente lecciona, caso pretenda remover alguma cadeira das leccionadas, selecione na tabela a opcção&nbsp;<span style="font-weight: 700;">
+                                    "Apagar".&nbsp;<span style="font-weight: 400;"></span>
+                                </span>
+                                <br>
+                            </p>
+                            <div class="u-form u-form-4">
+                                <form asp-page="./Index" method="get" class="u-clearfix u-form-horizontal u-form-spacing-12 u-inner-form" style="padding: 5px;">
+                                    <div class="u-form-group u-form-name">
+                                        <input type="text" placeholder="Nome Cadeira" name="Sec_Leccionada_NomeCadeira" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-7">
+                                    </div>
+                                    <div class="u-form-email u-form-group">
+                                        <input type="number" placeholder="ID Cadeira" name="Sec_Leccionada_IDCadeira" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-8">
+                                    </div>
+                                    <div class="u-form-group u-form-group-12">
+                                        <input type="number" placeholder="ID Curso" name="Sec_Leccionada_IDCurso" class="u-border-1 u-border-white u-input u-input-rectangle u-white u-input-9">
+                                    </div>
+                                    <div class="u-form-group u-form-submit">
+                                        <button type="submit" class="u-btn u-btn-submit u-button-style u-btn-10">Pesquisar</button>
+                                        <input type="submit" value="submit" class="u-form-control-hidden">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="u-expanded-width-md u-expanded-width-sm u-table u-table-responsive u-table-3">
+                                <table class="table u-table-entity">
+                                    <thead class="u-palette-4-base u-table-header u-table-header-1">
+                                        <tr>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">ID cadeira</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">Nome cadeira</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell">ID curso</th>
+                                            <th class="u-border-1 u-border-palette-4-base u-table-cell"> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="u-table-body u-white u-table-body-1">
+                                        @foreach (var item in Model.Leccionadas)
+                                        {
+                            <tr>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.CadeiraID)
+                                </td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.cadeira.Name)
+                                </td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+                                    @Html.DisplayFor(modelItem => item.cadeira.CursoID)
+                                </td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">
+
+                                    <form method="post">
+                                        <button type="submit" asp-page-handler="like" asp-route-id="@item.ID" style="       background-color: white;
+                                            width: 100%;
+                                            border-top-width: 0px;
+                                            border-bottom-width: 0px;
+                                            border-left-width: 0px;
+                                            border-right-width: 0px;
+                                            color: black;">
+                                            Apagar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+}
+                                    </tbody>
+                                </table>
+                            </div>
+                            @{ var prevLecci = !Model.Leccionadas.HasPreviousPage;
+                                var nextLecci = !Model.Leccionadas.HasNextPage;
+                                if (nextLecci != true)
+                                {
+                    <a asp-route-pageIndex="@(Model.Leccionadas.PageIndex + 1)" asp-route-id="4"
+                       class="btn btn-primary u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-11">Seguinte</a> }
+                else
+                {<a class="btn btn-primary disabled u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-11">Seguinte</a> }
+
+
+                if (prevLecci != true)
+                {
+            <a asp-route-pageIndex="@(Model.Leccionadas.PageIndex - 1)" asp-route-id="4"
+               class="btn btn-primary u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-12">Anterior</a> }
+        else
+        {<a class="btn btn-primary disabled u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-4-base u-radius-6 u-btn-12">Anterior</a> } }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("u-tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }</script>
+}

@@ -1,0 +1,76 @@
+@page
+@model AsMinhasDuvidas.Pages.Foruns.IndexModel
+
+@inject AsMinhasDuvidas.Data.ApplicationDbContext DB
+
+@using AsMinhasDuvidas.Areas.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{ Layout = "~/Pages/Shared/_Layout2.cshtml"; }
+
+<link rel="stylesheet" href="~/css/Forum.css" />
+<section class="u-align-center u-clearfix u-grey-10 u-section-1" id="carousel_5f41">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-col">
+                    <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                        <div class="u-container-layout u-valign-middle-xs u-container-layout-1">
+                            <div class="u-border-2 u-border-grey-75 u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-shape-rectangle u-white u-group-1">
+                                <div class="u-container-layout u-container-layout-2">
+                                    <img src="~/css/imagens/db285e87676e824afbceaef5a7a282d31.jpg" alt="" class="u-image u-image-default u-image-1" data-image-width="1200" data-image-height="1190">
+                                    <div class="u-form u-form-1">
+                                        <form asp-page="./Index" method="get" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px">
+                                            <div class="u-form-group u-form-name">
+                                                <label for="name-558c" class="u-form-control-hidden u-label u-label-1">Name</label>
+                                                <input type="text" placeholder="" id="name-558c" name="nome" class="u-border-1 u-border-black u-input u-input-rectangle u-white u-input-1">
+                                            </div>
+                                            <div class="u-form-checkbox u-form-group u-form-group-2">
+                                                <input type="checkbox" id="checkbox-9671" name="checkbox" value="On">
+                                                <label for="checkbox-9671" class="u-label u-label-2">Meus Foruns</label>
+                                            </div>
+                                            <div class="u-form-group u-form-submit">
+                                                <button class="u-btn u-btn-submit u-button-style" type="submit">Procurar</button>
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        @if (DB.Users.Where(s => s.UserName == User.Identity.Name).First().Id != "admin")
+                                    {
+                                         <a asp-page="./Create" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-2">Criar Forum</a>
+                                     }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @foreach (var item in Model.Forum)
+        {
+            var titulo = item.Titulo;
+            if (item.Aberto == false) { titulo += "[Fechado]"; }
+    <div class="u-blog u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-repeater u-repeater-1">
+    <!--blog_post-->
+     <div class="u-blog-post u-container-style u-repeater-item u-white">
+        <div class="u-container-layout u-similar-container u-container-layout-4">
+            <h2 class="u-text u-text-1">@titulo
+               
+            </h2><!--blog_post_image-->
+            <img src="~/css/imagens/android-question-100840994-large.jpg" alt="" class="u-blog-control u-hidden-md u-hidden-xs u-image u-image-default u-image-2" data-image-width="1200" data-image-height="800">
+            <p class="u-text u-text-2"> @Html.DisplayFor(modelItem => item.Descricao)</p>
+            <p class="u-hidden-xs u-text u-text-3">@DB.Users.Where(s => s.Id == item.UserID).First().UserName</p>
+           
+            <a asp-page="./Posts/Index" asp-route-id="@item.Id" class="u-blog-control u-border-2 u-border-grey-dark-1 u-btn u-btn-rectangle u-button-style u-none u-btn-3">Abrir</a>
+            <p class="u-text u-text-4">@DB.Post.Where(s => s.ForumID == item.Id).Count() Respostas</p>
+            <div class="u-blog-control u-metadata u-metadata-1">
+
+                 <span class="u-meta-date u-meta-icon"> @Html.DisplayFor(modelItem => item.data.Date)</span>
+            </div>
+        </div>
+     </div>
+
+    </div>}
+ </div>
+</section>

@@ -1,0 +1,284 @@
+@page
+@model AsMinhasDuvidas.Pages.Duvidas.IndexModel
+@using System.Linq
+@using Microsoft.EntityFrameworkCore
+@using AsMinhasDuvidas.Areas.Identity
+@inject AsMinhasDuvidas.Data.ApplicationDbContext DB
+
+@using Microsoft.AspNetCore.Http
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{ ViewData["Title"] = "pagina2";
+    Layout = "~/Pages/Shared/_Layout2.cshtml"; }
+
+<link rel="stylesheet" href="~/css/nicepage2.css" />
+
+<link rel="stylesheet" href="~/css/Questoes.css" />
+
+
+<section class="u-clearfix u-custom-color-3 u-section-1" id="sec-5a63">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-row">
+                    <div class="u-container-style u-layout-cell u-size-46 u-layout-cell-1">
+                        <div class="u-container-layout u-container-layout-1">
+                            <img src="~/css/imagens/presentations.jpg" alt="" class="u-hidden-md u-hidden-sm u-hidden-xs u-image u-image-default u-image-1" data-image-width="1200" data-image-height="700">
+                        </div>
+                    </div>
+                    <div class="u-align-left u-container-style u-layout-cell u-shape-rectangle u-size-14 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-2">
+                            <div class="u-container-style u-custom-color-1 u-group u-shape-rectangle u-group-1">
+                                <div class="u-container-layout u-valign-top-md u-container-layout-3">
+                                    @if (DB.UserRoles.Where(s=>s.RoleId==
+                                     DB.Roles.Where(s=>s.Name=="aluno").First().Id && s.UserId==
+                                     DB.Users.Where(s=>s.UserName==User.Identity.Name).First().Id).Count() > 0)
+                                    {
+                                        <a href="~/Duvidas/Create" class="u-active-none u-border-5 u-border-active-palette-2-dark-1 u-border-hover-black u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-8">Criar Dúvida</a>
+
+                                                    }
+
+                                    <div class="u-border-3 u-border-palette-1-base u-container-style u-group u-white u-group-2">
+                                        <div class="u-container-layout u-container-layout-4">
+                                            <h4 class="u-text u-text-default u-text-13" style="bottom: auto; top: -110px; top: -50;">Filtros</h4>
+                                            <a asp-page="./Index" asp-route-sortOrder="@Model.DataSort" asp-route-currentFilter="@Model.CurrentFilterData" class="u-active-none u-border-3 u-border-active-palette-2-dark-1 u-border-hover-black u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-9">Dúvidas recentes</a>
+                                             
+                                            <a asp-page="./Index" asp-route-sortOrder="@Model.VerTodas" asp-route-currentFilter="@Model.CurrentFilterTodas" class="u-active-none u-border-3 u-border-active-palette-2-dark-1 u-border-hover-black u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-9" style="margin-top:20px;">Ver Todas</a>
+                                              @if (DB.UserRoles.Where(s => s.RoleId ==
+                                               DB.Roles.Where(s => s.Name == "aluno").First().Id && s.UserId ==
+                                               DB.Users.Where(s => s.UserName == User.Identity.Name).First().Id).Count() > 0)
+                                              {
+                                                  <a asp-page="./Index" asp-route-sortOrder="@Model.MinhasDuvidasSort" asp-route-currentFilter="@Model.CurrentFilter" style="margin-top:30px;" class="u-active-none u-border-3 u-border-active-palette-2-dark-1 u-border-hover-black u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-9">As minhas dúvidas</a>
+                                              }
+                                              <div class="u-form u-form-1">
+                                               
+
+                                                  <form asp-page="./Index" method="get" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 5px;" source="custom" name="form">
+                                                      <div  class="u-border-1 u-border-grey-30 u-search u-search-left u-white u-search-1">
+                                                          <button class="u-search-button" type="submit">
+                                                              <span class="u-search-icon u-spacing-10">
+                                                                  <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-386a"></use></svg>
+                                                                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-386a" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" class="u-svg-content"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path></svg>
+                                                              </span>
+                                                          </button>
+
+                                                          <input type="search" class="input-pesquisar"name="SearchStringCadeira" value="@Model.CurrentFilter" placeholder="Pesquisar Cadeira" />
+
+                                                      </div>
+                                                      <div class="u-form-date u-form-group u-form-group-2">
+                                                          <label style="color:black;" class="u-label">Topico</label>
+                                                          <input type="text" name="SearchStringTopico" placeholder="Pesquisar tópico" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                                                      </div>
+                                                      <div class="u-form-date u-form-group u-form-group-3">
+                                                          <label style="color:black;" for="date-4398" class="u-label">Foruns criados entre</label>
+                                                          <input type="date" name="From" placeholder="YYYY/MM/DD" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                                                      </div>
+                                                      <div class="u-form-date u-form-group u-form-group-4">
+                                                          <label style="color:black;" for="date-236c" class="u-form-control-hidden u-label">Date</label>
+                                                          <input type="date" name="To" placeholder="YYYY/MM/DD" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                                                      </div>
+                                                      <div class="u-align-left u-form-group u-form-submit u-form-group-5">
+                                                          <button class="u-btn-search u-btn-round u-radius-6  style="background-color: #a35559 !important;" type="submit">
+                                                              Procurar
+                                                          </button>
+                                                          <input type="submit" name="submit" value="Search" class="u-form-control-hidden">
+                                                      </div>
+
+                                                  </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="u-clearfix u-expanded-width-xs u-layout-wrap u-palette-1-base u-layout-wrap-2">
+            <div class="u-layout">
+                <div class="u-layout-row">
+                    @{ int i = 0;}
+                    @foreach (var item in Model.Duvidas)
+                    {
+
+                        if (i % 2 == 0)
+                        {
+        <div class="u-container-style u-layout-cell u-palette-2-dark-1 u-size-15 u-size-30-md u-layout-cell-5">
+            <div class="u-border-2 u-border-white u-container-layout u-container-layout-7">
+                <a asp-page="./Vizualizar" asp-route-id="@item.ID" class="u-btn u-button-style u-none u-text-body-alt-color u-text-hover-palette-2-base u-btn-1">
+                    Ler Mais&nbsp;<span class="u-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;" id="svg-310b"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
+                </a>
+                @{ var user = DB.Users.Where(s => s.UserName == User.Identity.Name).ToList();
+                    if (DB.ApoiaDuvida.Where(s => s.UserID == user.First().Id).Where(s => s.DuvidaID == item.ID).Count() == 0 && DB.UserRoles.Where(s => s.RoleId == (DB.Roles.Where(s => s.Name == "aluno").First().Id) && s.UserId == user.First().Id).Count() > 0 && DB.Duvida.Where(s => s.ID == item.ID && s.user.Id == user.First().Id).Count() == 0)
+                    {
+                            <form method="post" class="u-dislike">
+
+                                <button type="submit" asp-page-handler="like" asp-route-id="@item.ID" class="u-border-0 u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-2">
+                                    <span class="u-icon u-icon-rectangle u-text-white u-icon-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 51.997 51.997" x="0px" y="0px" style="width: 1em; height: 1em;" id="svg-e06c"><g><path d="M51.911,16.242C51.152,7.888,45.239,1.827,37.839,1.827c-4.93,0-9.444,2.653-11.984,6.905c-2.517-4.307-6.846-6.906-11.697-6.906c-7.399,0-13.313,6.061-14.071,14.415c-0.06,0.369-0.306,2.311,0.442,5.478c1.078,4.568,3.568,8.723,7.199,12.013l18.115,16.439l18.426-16.438c3.631-3.291,6.121-7.445,7.199-12.014C52.216,18.553,51.97,16.611,51.911,16.242z M49.521,21.261c-0.984,4.172-3.265,7.973-6.59,10.985L25.855,47.481L9.072,32.25c-3.331-3.018-5.611-6.818-6.596-10.99c-0.708-2.997-0.417-4.69-0.416-4.701l0.015-0.101C2.725,9.139,7.806,3.826,14.158,3.826c4.687,0,8.813,2.88,10.771,7.515l0.921,2.183l0.921-2.183c1.927-4.564,6.271-7.514,11.069-7.514c6.351,0,11.433,5.313,12.096,12.727C49.938,16.57,50.229,18.264,49.521,21.261z"></path></g></svg><img>
+                                    </span>
+                                </button>
+
+
+                            </form> }
+                    else
+                    {
+                        if(DB.UserRoles.Where(s => s.RoleId == (DB.Roles.Where(s => s.Name == "aluno").First().Id) && s.UserId == user.First().Id).Count() > 0 && DB.Duvida.Where(s => s.ID == item.ID && s.user.Id == user.First().Id).Count() == 0) {
+                            <form method="post" class="u-like">
+                                <button type="submit" asp-page-handler="dislike" asp-route-id="@item.ID" class="u-border-0 u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-2">
+                                    <span class="u-icon u-icon-rectangle u-text-white u-icon-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 50 50" x="0px" y="0px" style="width: 1em; height: 1em;" id="svg-2cb0"><path style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"></path></svg><img>
+                                    </span>
+                                </button>
+                            </form> }
+                         else
+                         {
+                            <form class="u-like">
+                                <div class="u-border-0 u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-2">
+                                    <span class="u-icon u-icon-rectangle u-text-white u-icon-4"></span>
+                                </div>
+                            </form>
+                            
+                            
+                         }
+                    }
+                }
+                <h4 class="u-text u-text-1">@Html.DisplayFor(modelItem => item.cadeira.Name)</h4>
+                @{ var respostafinal = "";
+                    var aux = "";
+
+                    aux = item.Pergunta;
+                    try
+                    {
+                        respostafinal = aux.Substring(0, 100);
+                        respostafinal = respostafinal + "...";
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        respostafinal = aux;
+                    }
+                    }
+                <h4 class="u-text u-text-2"> @Html.DisplayFor(modelItem => item.Topico)</h4>
+                <p class="u-text u-text-3">@respostafinal </p>
+                
+
+
+
+            </div>
+        </div>}
+    if (i % 2 != 0)
+    {
+    <div class="u-container-style u-layout-cell u-palette-5-dark-1 u-right-cell u-size-15 u-size-30-md u-layout-cell-6">
+        <div class="u-border-2 u-border-white u-container-layout u-container-layout-8">
+            <a asp-page="./Vizualizar" asp-route-id="@item.ID" class="u-btn u-button-style u-none u-text-body-alt-color u-text-hover-palette-2-base u-btn-1">
+                Ler Mais&nbsp;<span class="u-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 -32 426.66667 426" style="width: 1em; height: 1em;" id="svg-d4b9"><path d="m213.332031 181.667969c0 4.265625-1.277343 8.53125-3.625 11.730469l-106.667969 160c-3.839843 5.761718-10.238281 9.601562-17.707031 9.601562h-64c-11.730469 0-21.332031-9.601562-21.332031-21.332031 0-4.269531 1.28125-8.535157 3.625-11.734375l98.773438-148.265625-98.773438-148.269531c-2.34375-3.199219-3.625-7.464844-3.625-11.730469 0-11.734375 9.601562-21.335938 21.332031-21.335938h64c7.46875 0 13.867188 3.839844 17.707031 9.601563l106.667969 160c2.347657 3.199218 3.625 7.464844 3.625 11.734375zm0 0"></path><path d="m426.667969 181.667969c0 4.265625-1.28125 8.53125-3.628907 11.730469l-106.664062 160c-3.839844 5.761718-10.242188 9.601562-17.707031 9.601562h-64c-11.734375 0-21.335938-9.601562-21.335938-21.332031 0-4.269531 1.28125-8.535157 3.628907-11.734375l98.773437-148.265625-98.773437-148.269531c-2.347657-3.199219-3.628907-7.464844-3.628907-11.730469 0-11.734375 9.601563-21.335938 21.335938-21.335938h64c7.464843 0 13.867187 3.839844 17.707031 9.601563l106.664062 160c2.347657 3.199218 3.628907 7.464844 3.628907 11.734375zm0 0"></path></svg><img></span>
+            </a>
+              @{ var user = DB.Users.Where(s => s.UserName == User.Identity.Name).ToList();
+
+                  if (DB.ApoiaDuvida.Where(s => s.UserID == user.First().Id).Where(s => s.DuvidaID == item.ID).Count() == 0 && DB.UserRoles.Where(s => s.RoleId == (DB.Roles.Where(s => s.Name == "aluno").First().Id) && s.UserId == user.First().Id).Count() > 0 && DB.Duvida.Where(s=>s.ID==item.ID && s.user.Id== user.First().Id).Count()==0 )
+                  {
+            <form method="post" class="u-dislike">
+                <button type="submit" asp-page-handler="like" asp-route-id="@item.ID" class="u-border-0 u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-2">
+                    <span class="u-icon u-icon-rectangle u-text-white u-icon-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 51.997 51.997" x="0px" y="0px" style="width: 1em; height: 1em;" id="svg-e06c"><g><path d="M51.911,16.242C51.152,7.888,45.239,1.827,37.839,1.827c-4.93,0-9.444,2.653-11.984,6.905c-2.517-4.307-6.846-6.906-11.697-6.906c-7.399,0-13.313,6.061-14.071,14.415c-0.06,0.369-0.306,2.311,0.442,5.478c1.078,4.568,3.568,8.723,7.199,12.013l18.115,16.439l18.426-16.438c3.631-3.291,6.121-7.445,7.199-12.014C52.216,18.553,51.97,16.611,51.911,16.242z M49.521,21.261c-0.984,4.172-3.265,7.973-6.59,10.985L25.855,47.481L9.072,32.25c-3.331-3.018-5.611-6.818-6.596-10.99c-0.708-2.997-0.417-4.69-0.416-4.701l0.015-0.101C2.725,9.139,7.806,3.826,14.158,3.826c4.687,0,8.813,2.88,10.771,7.515l0.921,2.183l0.921-2.183c1.927-4.564,6.271-7.514,11.069-7.514c6.351,0,11.433,5.313,12.096,12.727C49.938,16.57,50.229,18.264,49.521,21.261z"></path></g></svg><img>
+                    </span>
+                </button>
+
+
+            </form> }
+                  else
+                  {
+                      if(DB.UserRoles.Where(s => s.RoleId == (DB.Roles.Where(s => s.Name == "aluno").First().Id) && s.UserId == user.First().Id).Count() > 0 && DB.Duvida.Where(s => s.ID == item.ID && s.user.Id == user.First().Id).Count() == 0) {
+                            <form method="post" class="u-like">
+                             <button type="submit" asp-page-handler="dislike" asp-route-id="@item.ID" class="u-border-0 u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-2">
+                             <span class="u-icon u-icon-rectangle u-text-white u-icon-4">
+                                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 50 50" x="0px" y="0px" style="width: 1em; height: 1em;" id="svg-2cb0"><path style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"></path></svg><img>
+                                 </span>
+                             </button>
+                            </form> }
+                      else
+                      {
+                            <form class="u-like">
+                                <div class="u-border-0 u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-2">
+                                    <span class="u-icon u-icon-rectangle u-text-white u-icon-4"></span>
+                                </div>
+                            </form>
+                      }
+                  }
+            }
+            <h4 class="u-text u-text-1">@Html.DisplayFor(modelItem => item.cadeira.Name)</h4>
+            @{ var respostafinal2 = "";
+                var aux = "";
+
+                aux = item.Pergunta;
+                try
+                {
+                    respostafinal2 = aux.Substring(0, 100);
+                    respostafinal2 = respostafinal2 + "...";
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    respostafinal2 = aux;
+                } }
+            <h4 class="u-text u-text-2"> @Html.DisplayFor(modelItem => item.Topico)</h4>
+            <p class="u-text u-text-3">  @respostafinal2</p>
+          
+        </div>
+    </div>}
+
+i += 1;
+}
+                </div>
+            </div>
+        </div>
+        <div class="u-layout-row" style="width: 60%;">
+
+
+            @{ var prevDisabled = !Model.Duvidas.HasPreviousPage;
+                var nextDisabled = !Model.Duvidas.HasNextPage;
+
+                if (prevDisabled != true)
+                {
+                    <a asp-page="./Index"
+                       asp-route-sortOrder="@Model.CurrentSort"
+                       asp-route-pageIndex="@(Model.Duvidas.PageIndex - 1)"
+                       asp-route-currentFilter="@Model.CurrentFilter"
+                       class="btn u-border-0 u-btn u-btn-round u-button-style u-radius-29 btn-primary @prevDisabled" style="background-color:white; color:black; top: 570px; margin-left:15px;">
+                        Anterior
+                    </a> }
+
+                if (nextDisabled != true)
+                {
+                    <a asp-page="./Index"
+                       asp-route-sortOrder="@Model.CurrentSort"
+                       asp-route-pageIndex="@(Model.Duvidas.PageIndex + 1)"
+                       asp-route-currentFilter="@Model.CurrentFilter"
+                       class="btn u-border-0 u-btn u-btn-round u-button-style u-radius-29 btn-prima @nextDisabled" style="
+                       top: 570px;
+                       background-color: white;
+                       color: black;
+                       margin-left: 15px;"> Seguinte </a> }
+             }
+
+
+
+
+
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

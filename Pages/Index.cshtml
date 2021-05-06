@@ -1,0 +1,40 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@using AsMinhasDuvidas.Areas.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model IndexModel
+@{
+    Layout = "~/Pages/Shared/_Layout2.cshtml";
+}
+<style>
+</style>
+
+<link rel="stylesheet" href="~/css/nicepage.css" />
+<meta property="og:title" content="Página 1">
+<title>Inicio</title>
+<link rel="stylesheet" href="~/css/Index.css" />
+<section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="256" data-image-height="256" id="sec-d380">
+
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-text u-text-default u-title u-text-1">As Minhas Dúvidas</h1>
+        @if (!(SignInManager.IsSignedIn(User)))
+        {
+            <a asp-area="Identity" asp-page="/Account/Login" class="u-btn u-button-style u-palette-2-base u-btn-1">Login</a>
+        }
+    </div>
+</section>
+<section class="u-align-center u-clearfix u-section-2" id="carousel_5b0b">
+    <div class="u-clearfix u-sheet u-valign-middle-sm u-sheet-1">
+        <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xl u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
+        <img class="u-align-left u-expanded-width-xs u-image u-left-0 u-image-1" src="~/css/imagens/Inicio2.jpg" width="200px">
+        <h2 class="u-custom-font u-text u-text-1">Quais são as tuas dúvidas?</h2>
+        <p class="u-text u-text-grey-50 u-text-2">Adere ao apoio diário entre alunos e professores, facilitando o esclarecimento das tuas questões </p>
+        @if (!(SignInManager.IsSignedIn(User)))
+        {
+            <a asp-area="Identity" asp-page="/Account/Register" class="u-border-2 u-border-palette-2-base u-btn u-button-style u-hover-palette-2-base u-none u-text-body-color u-text-hover-white u-btn-2">Registar</a>
+
+        }
+    </div>
+</section>
+

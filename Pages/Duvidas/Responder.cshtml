@@ -1,0 +1,92 @@
+@page "{id}"
+@model AsMinhasDuvidas.Pages.Duvidas.ResponderModel
+@using System.Linq
+@using Microsoft.EntityFrameworkCore
+@using AsMinhasDuvidas.Areas.Identity
+@inject AsMinhasDuvidas.Data.ApplicationDbContext DB
+@inject RoleManager<IdentityRole> roleManager
+
+@using Microsoft.AspNetCore.Http
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{ ViewData["Title"] = "pagina2";
+    Layout = "~/Pages/Shared/_Layout2.cshtml"; }
+<link rel="stylesheet" href="~/css/nicepage.css" />
+<link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+<link rel="stylesheet" href="~/css/Responder.css" media="screen">
+
+<section class="u-clearfix u-grey-10 u-section-1" id="carousel_4dbc">
+    <div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <div class="u-clearfix u-expanded-width-lg u-expanded-width-md u-expanded-width-xl u-gutter-0 u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-row">
+                   
+                            <div class="u-container-style u-layout-cell u-left-cell u-size-30 u-layout-cell-1">
+                                <div class="u-container-layout u-container-layout-1">
+                                    <h3 class="u-text u-text-1">Cadeira</h3>
+                                    <p class="u-text u-text-2">@Model.Duvidas.First().cadeira.Name</p>
+                                    <h3 class="u-text u-text-3">Pergunta</h3>
+                                    <p class="u-text u-text-4">@Model.Duvidas.First().Pergunta</p>
+                                </div>
+                            </div>
+                                <div class="u-align-left u-container-style u-layout-cell u-palette-2-dark-1 u-right-cell u-size-30 u-layout-cell-2">
+                                    <div class="u-container-layout u-container-layout-2">
+                                        <h3 class="u-text u-text-5">Resposta</h3>
+                                        <div class="u-form u-form-1">
+                                            <form method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 40px;">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <input type="hidden" asp-for="Duvida.ID" />
+                                                <input type="hidden" asp-for="Duvida.Data" />
+                                                <input type="hidden" asp-for="Duvida.Topico" />
+                                                <input type="hidden" asp-for="Duvida.CadeiraID" />
+                                                <input type="hidden" asp-for="Duvida.UserID" />
+                                                <input type="hidden" asp-for="Duvida.Pergunta" />
+
+                                                <div class="u-form-group u-form-message u-form-group-1">
+                                                    <label class="u-form-control-hidden u-label u-label-1">Message</label>
+                                                    <textarea asp-for="Duvida.Resposta" placeholder="" rows="8" cols="50" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+                                                    <span asp-validation-for="Duvida.Resposta" class="text-danger"></span>
+
+                                                </div>
+                                                <div class="u-form-group u-form-radiobutton u-form-group-2">
+                                                    <div class="u-form-radio-button-wrapper">
+                                                        <label class="u-label u-label-2">Criador e seguidores da pergunta</label>
+                                                        <input asp-for="Duvida.VizualizarResposta" type="radio" value="False">
+
+
+                                                        <br>
+                                                        <label class="u-label u-label-3">Todos os alunos</label>
+
+                                                        <input asp-for="Duvida.VizualizarResposta" type="radio"  value="True">
+                                                        <span asp-validation-for="Duvida.VizualizarResposta" class="text-danger"></span>
+
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                                <div class="u-align-left-md u-align-left-sm u-align-left-xs u-form-group u-form-submit u-form-group-3">
+                                                    <input type="submit" value="Responder" class="u-btn u-btn-round u-btn-submit u-button-style u-grey-10 u-radius-24 u-btn-1">
+                                                </div>
+
+                                            </form>
+                         
+                                        </div>
+                                    </div>
+                                </div>
+                     
+                 </div>
+                    
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

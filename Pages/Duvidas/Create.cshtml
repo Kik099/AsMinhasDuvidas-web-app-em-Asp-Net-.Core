@@ -1,0 +1,56 @@
+@page
+@model AsMinhasDuvidas.Pages.Duvidas.CreateModel
+
+
+@{ Layout = "~/Pages/Shared/_Layout2.cshtml"; }
+
+<link rel="stylesheet" href="~/css/CriarDuvida.css" />
+<section class="u-align-center u-clearfix u-section-1" id="carousel_3c3c">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-align-center-sm u-align-center-xs u-border-10 u-border-palette-1-base u-container-style u-expanded-width-sm u-expanded-width-xs u-group u-group-1">
+            <div class="u-container-layout u-container-layout-1">
+                <h3 class="u-align-center-lg u-align-center-md u-align-center-xl u-text u-text-default u-text-1">Criar Dúvida</h3>
+                <p class="u-align-center u-text u-text-default u-text-2">Caso não apareca a cadeira pretendida verifique na página apoio ao aluno se está matriculado à mesma.<br> Se a dúvida já existir dirija-se à página anterior e pressione no coração que não está preenchido.</p>
+                <a class="u-btn u-button-style u-none u-btn-1">
+                    <span class="u-icon u-icon-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 286.054 286.054" x="0px" y="0px" style="width: 1em; height: 1em;"><g><path style="fill:currentColor;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027   c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236   c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209   S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972   c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723   c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843   C160.878,195.732,152.878,187.723,143.036,187.723z"></path>
+</g></svg><img>
+                    </span>
+                </a>
+                <div class="u-form u-form-1">
+                    <form  method="post" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" style="padding: 10px">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="u-form-group u-form-name u-form-group-1">
+                            <label class="u-label">Topico</label>
+                            <input asp-for="Duvida.Topico" type="text" placeholder="Introduza o Assunto da Pergunta"   class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="required" maxlength="50">
+                            <span asp-validation-for="Duvida.Topico" class="text-danger"></span>
+                        </div>
+                        <div class="u-form-group u-form-message u-form-group-2">
+                            <label  class="u-label">Pergunta</label>
+                            <textarea asp-for="Duvida.Pergunta" placeholder="Introduza aqui a pergunta" rows="4" cols="50" id="message-a97b" class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" required="required"></textarea>
+                            <span asp-validation-for="Duvida.Pergunta" class="text-danger"></span>
+
+                        </div>
+                        <div class="u-form-group u-form-select u-form-group-3">
+                            <label  class="u-label">Cadeira</label>
+                            <div class="u-form-select-wrapper">
+                                <select asp-for="Duvida.CadeiraID" asp-items="ViewBag.CadeiraID" class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-white" size="3" required="required">
+                                   
+                                </select>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="u-align-center u-form-group u-form-submit u-form-group-4">
+                            <input type="submit" value="Criar" class="u-btn u-btn-submit u-button-style">
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,54 @@
+@page "{id}"
+@model AsMinhasDuvidas.Pages.Foruns.Posts.EditForumModel
+
+@{ Layout = "~/Pages/Shared/_Layout2.cshtml";}
+
+<link rel="stylesheet" href="~/css/EditForum.css" />
+
+<section class="u-align-center u-clearfix u-image u-shading u-section-1" id="carousel_be0b">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-palette-2-base u-shape u-shape-rectangle u-shape-1"></div>
+        <div class="u-container-style u-expanded-width-sm u-expanded-width-xs u-group u-white u-group-1">
+            <div class="u-container-layout u-container-layout-1">
+                <h2 class="u-align-center u-text u-text-1">Editar/Apagar Forum</h2>
+                <form method="post">
+                    <button type="submit" asp-page-handler="delete" asp-route-id="@ViewContext.RouteData.Values["id"]" class="u-black u-btn u-btn-round u-button-style u-hover-black u-radius-6 u-btn-1">Apagar</button>
+                </form>
+                <div class="u-form u-form-1">
+                    <form method="post" class="u-clearfix u-form-spacing-13 u-form-vertical u-inner-form" style="padding: 0;">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Forum.Id" />
+                        <input type="hidden" asp-for="Forum.Aberto" />
+                        <input type="hidden" asp-for="Forum.data" />
+                        <input type="hidden" asp-for="Forum.UserID" />
+                        <div class="u-form-group u-form-name">
+                            <label for="name-f18c" class="u-label">Titulo</label>
+                            <input type="text" placeholder="Enter your Name" asp-for="Forum.Titulo" class="u-grey-5 u-input u-input-rectangle u-input-1" required="" maxlength="50">
+                            <span asp-validation-for="Forum.Titulo" class="text-danger"></span>
+                        </div>
+                        <div class="u-form-group u-form-message u-form-group-2">
+                            <label for="message-1015" class="u-label">Descrição</label>
+                            <textarea placeholder="" rows="6" cols="50" asp-for="Forum.Descricao" class="u-grey-5 u-input u-input-rectangle u-input-2" required=""></textarea>
+                            <span asp-validation-for="Forum.Descricao" class="text-danger"></span>
+                        </div>
+                        <div class="u-align-center u-form-group u-form-submit">
+                            <button type="submit" class="u-black u-btn u-btn-submit u-button-style u-btn-2">Editar</button>
+
+                        </div>
+
+                    </form>
+                </div>
+                <p class="u-text u-text-grey-50 u-text-2">Se já foi esclarecido em relação à sua questão pressione a opção</p><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1">
+                    <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 111.577 111.577" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2eb8"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 111.577 111.577" x="0px" y="0px" id="svg-2eb8" style="enable-background:new 0 0 111.577 111.577;"><g><path d="M78.962,99.536l-1.559,6.373c-4.677,1.846-8.413,3.251-11.195,4.217c-2.785,0.969-6.021,1.451-9.708,1.451   c-5.662,0-10.066-1.387-13.207-4.142c-3.141-2.766-4.712-6.271-4.712-10.523c0-1.646,0.114-3.339,0.351-5.064   c0.239-1.727,0.619-3.672,1.139-5.846l5.845-20.688c0.52-1.981,0.962-3.858,1.316-5.633c0.359-1.764,0.532-3.387,0.532-4.848   c0-2.642-0.547-4.49-1.636-5.529c-1.089-1.036-3.167-1.562-6.252-1.562c-1.511,0-3.064,0.242-4.647,0.71   c-1.59,0.47-2.949,0.924-4.09,1.346l1.563-6.378c3.829-1.559,7.489-2.894,10.99-4.002c3.501-1.111,6.809-1.667,9.938-1.667   c5.623,0,9.962,1.359,13.009,4.077c3.047,2.72,4.57,6.246,4.57,10.591c0,0.899-0.1,2.483-0.315,4.747   c-0.21,2.269-0.601,4.348-1.171,6.239l-5.82,20.605c-0.477,1.655-0.906,3.547-1.279,5.676c-0.385,2.115-0.569,3.731-0.569,4.815   c0,2.736,0.61,4.604,1.833,5.597c1.232,0.993,3.354,1.487,6.368,1.487c1.415,0,3.025-0.251,4.814-0.744   C76.854,100.348,78.155,99.915,78.962,99.536z M80.438,13.03c0,3.59-1.353,6.656-4.072,9.177c-2.712,2.53-5.98,3.796-9.803,3.796   c-3.835,0-7.111-1.266-9.854-3.796c-2.738-2.522-4.11-5.587-4.11-9.177c0-3.583,1.372-6.654,4.11-9.207   C59.447,1.274,62.729,0,66.563,0c3.822,0,7.091,1.277,9.803,3.823C79.087,6.376,80.438,9.448,80.438,13.03z"></path></g></svg>
+                </span>
+                <form method="post" class="u-clearfix u-form-spacing-13 u-form-vertical u-inner-form" style="padding: 0;">
+                    
+                    <button type="submit" asp-page-handler="fechar" asp-route-id="@ViewContext.RouteData.Values["id"]" class="u-active-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3">Fechar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

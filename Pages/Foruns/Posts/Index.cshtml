@@ -1,0 +1,80 @@
+@page "{id}"
+@model AsMinhasDuvidas.Pages.Foruns.Posts.IndexModel
+
+@using AsMinhasDuvidas.Areas.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject AsMinhasDuvidas.Data.ApplicationDbContext DB
+@{ Layout = "~/Pages/Shared/_Layout2.cshtml"; }
+
+
+<link rel="stylesheet" href="~/css/Post.css" />
+<section class="u-align-left u-clearfix u-grey-10 u-section-1" id="carousel_2cd3">
+    <div class="u-clearfix u-sheet u-sheet-1">
+         @if (SignInManager.IsSignedIn(User))
+         {
+             @if (DB.Users.Where(s => s.UserName == User.Identity.Name).First().Id == "admin" )
+             {
+                <a asp-page="./EditForum" asp-route-id="@ViewContext.RouteData.Values["id"]" class="u-active-none u-border-2 u-border-palette-1-base u-btn u-btn-rectangle u-button-style u-hover-none u-none u-btn-1">Editar Forum</a>
+             }
+             @if(DB.Forum.Where(s => s.user.UserName == User.Identity.Name && s.Aberto==true && s.Id == Int32.Parse((string)ViewContext.RouteData.Values["id"])).Count() > 0)
+             {
+                 <a asp-page="./EditForum" asp-route-id="@ViewContext.RouteData.Values["id"]" class="u-active-none u-border-2 u-border-palette-1-base u-btn u-btn-rectangle u-button-style u-hover-none u-none u-btn-1">Editar Forum</a>
+             }
+              @if(DB.Forum.Where(s => s.Aberto==true && s.Id == Int32.Parse((string)ViewContext.RouteData.Values["id"])).Count() > 0)
+             {
+                  <a asp-page="Create" asp-route-id="@ViewContext.RouteData.Values["id"]" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-2" style="margin-top:10px;">Responder</a>
+             }
+              
+              
+         }
+         <h2 class="u-text u-text-default u-text-1">Forum<br>
+          <br>
+        </h2>
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-col">
+                    @foreach (var item in Model.Forum)
+                    {
+                    <div class="u-container-style u-layout-cell u-radius-11 u-shape-round u-size-30 u-white u-layout-cell-1">
+                        <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-1">
+                            <div class="u-border-2 u-border-grey-75 u-container-style u-group u-palette-1-light-1 u-radius-11 u-shape-round u-group-1">
+                                <div class="u-container-layout u-container-layout-2">
+                                    <h2 class="u-subtitle u-text u-text-2">@Html.DisplayFor(modelItem => item.Titulo)</h2>
+                                </div>
+                            </div>
+                            <p class="u-text u-text-3">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                            <p class="u-hidden-xs u-text u-text-4">@DB.Users.Where(s => s.Id == item.UserID).First().UserName</p>
+                            <p class="u-hidden-xs u-text u-text-5">@DB.Post.Where(s => s.ForumID == item.Id).Count() Respostas</p>
+                            <p class="u-hidden-xs u-text u-text-6">@item.data.Date.ToShortDateString()</p>
+                        </div>
+                    </div>
+                    }
+                    @foreach (var item in Model.Post)
+                    {
+                    <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-3">
+                            <div class="u-container-style u-expanded-width u-group u-white u-group-2">
+                                <div class="u-container-layout u-container-layout-3">
+                                    <h4 class="u-text u-text-7"><br />@DB.Users.Where(s => s.Id == item.UserID).First().UserName<br/></h4>
+                                    <p class="u-text u-text-8">@Html.DisplayFor(modelItem => item.conteudo)</p>
+                                     @if (SignInManager.IsSignedIn(User) && DB.Post.Where(s=>s.Forum.Aberto==true && s.Id==item.Id).Count()>0)
+                                    {
+                                        @if (DB.Post.Where(s => s.Id == item.Id && s.user.UserName == User.Identity.Name).Count() > 0) {
+                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="u-border-2 u-border-black u-btn u-button-style u-none u-text-black u-btn-3">Editar</a>
+                                        }
+                                        @if (DB.Users.Where(s => s.UserName == User.Identity.Name).First().Id=="admin" && DB.Post.Where(s => s.Id == item.Id && s.user.UserName == User.Identity.Name).Count() == 0) {
+                                             <a asp-page="./Edit" asp-route-id="@item.Id" class="u-border-2 u-border-black u-btn u-button-style u-none u-text-black u-btn-3">Editar</a>
+                                        }
+                                     }
+
+                                     <p class="u-text u-text-9">@Html.DisplayFor(modelItem => item.data)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
