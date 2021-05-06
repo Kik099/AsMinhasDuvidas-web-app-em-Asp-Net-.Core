@@ -1,0 +1,73 @@
+@page
+@model LoginModel
+
+@{ ViewData["Title"] = "Log in"; Layout = "~/Pages/Shared/_Layout2.cshtml";}
+
+
+<link rel="stylesheet" href="~/css/login.css" />
+<section class="u-clearfix u-gradient u-section-1">
+    <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+        <div class="u-gutter-0 u-layout">
+            <div class="u-layout-row">
+                <div class="u-size-29">
+                    <div class="u-layout-col">
+                        <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-1">
+                            <div class="u-container-layout u-container-layout-1">
+                                <img src="~/css/imagens/login.png" alt="" class="u-image u-image-default u-image-1" data-image-width="820" data-image-height="527">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-size-31">
+                    <div class="u-layout-row">
+                        <div class="u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-60 u-layout-cell-2">
+                            <div class="u-container-layout u-container-layout-2">
+                                <h1 class="u-text u-text-1">Iniciar Sessão</h1>
+                                <div class="u-expanded-width u-form u-form-1">
+                                    <form id="account" method="post" class="u-clearfix u-form-spacing-24 u-form-vertical u-inner-form" style="padding: 28px;">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                                        <div class="u-form-email u-form-group u-form-group-1">
+                                            <label  class="u-form-control-hidden u-label">Email</label>
+                                            <input asp-for="Input.Email" placeholder="Enter a valid email address" class="u-border-2 u-border-palette-5-base u-input u-input-rectangle u-white">
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="u-form-address u-form-group u-form-group-2">
+                                            <label class="u-form-control-hidden u-label">Password</label>
+                                            <input asp-for="Input.Password" placeholder="Enter your paswword" class="u-border-2 u-border-palette-5-base u-input u-input-rectangle u-white" >
+                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="u-align-left u-form-group u-form-submit u-form-group-3">
+                                            <button type="submit" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-18 u-white u-btn-1">Log in</button>
+                                        </div>
+                                        <div class="u-layout-row">
+                                            <div class="form-group">
+                                                <p>
+                                                    <a id="forgot-password" style="color:white;margin-left: 37px;" asp-page="./ForgotPassword">Repor password</a>
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+                                       
+                                    </form>
+                                </div>
+                                <div class="u-border-3 u-border-black u-line u-line-horizontal u-line-1"></div>
+                                <h1 class="u-text u-text-2">Registar</h1>
+                                <a asp-page="./Register" class="u-btn u-btn-round u-button-style u-grey-90 u-hover-palette-1-light-2 u-radius-22 u-text-body-alt-color u-btn-2">
+                                    Registar&nbsp;<span class="u-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068 c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557 l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104 c0.006-.006,0.011-.013,0.018-.019C513.968,262.339,513.943,249.635,506.134,241.843z"></path></svg><img></span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

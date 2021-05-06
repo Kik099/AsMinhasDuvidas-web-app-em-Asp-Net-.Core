@@ -1,0 +1,79 @@
+@page
+@model RegisterModel
+
+@using System.Linq
+@inject AsMinhasDuvidas.Data.ApplicationDbContext DB
+@{ ViewData["Title"] = "Register";
+    Layout = "~/Pages/Shared/_Layout2.cshtml";}
+
+<link rel="stylesheet" href="~/css/Registar.css" />
+<section class="u-clearfix u-custom-color-2 u-section-1" style="background-color: #275bae;" id="carousel_3904">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-2 u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-row">
+                    <div class="u-container-style u-layout-cell u-left-cell u-size-27 u-layout-cell-1">
+                        <div class="u-container-layout u-container-layout-1">
+                            <h1 class="u-text u-text-default u-text-1" style="color:black;">As Minhas Dúvidas</h1>
+                            <p class="u-custom-font u-heading-font u-text u-text-2" style="color:white;">
+                                Seja bem-vindo ao site AsMinhasDúvidas, o melhor sitio para se fazerem questões pertinentes sobre as cadeiras que frequenta.
+                                <br>Depois de fazer o Registo não se esqueça de dirigir à pagina Alunos ou Professores, para se inscrever nas cadeiras que pretende seguir ou leccionar.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-layout-cell u-right-cell u-size-33 u-layout-cell-2">
+                        <div class="u-container-layout u-container-layout-2">
+                            <div class="u-form u-form-1">
+                                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="u-form-email u-form-group u-form-partition-factor-2 u-form-group-1">
+                                        <label for="email-319a" class="u-label u-text-body-alt-color u-label-1">Código de Aluno/Professor</label>
+                                        <input placeholder="Introduza o código de utilizador" asp-for="Input.ID" class="u-input u-input-rectangle u-white">
+                                        <span class="text-danger">@TempData["id"]</span>
+                                        <span class="text-danger">@TempData["email"]</span>
+                                        <span asp-validation-for="Input.ID" class="text-danger"></span>
+                                    </div>
+                                    <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-2">
+                                        <label for="name-319a" class="u-label u-text-body-alt-color u-label-2">Nome</label>
+                                        <input type="text" placeholder="Introduza o Nome" asp-for="Input.Name" class="u-input u-input-rectangle u-white">
+                                        <span asp-validation-for="Input.Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="u-form-address u-form-group u-form-group-3">
+                                        <label for="address-452f" class="u-label u-text-body-alt-color u-label-3">Email</label>
+                                        <input type="text" placeholder="Introduza o email" asp-for="Input.Email" class="u-input u-input-rectangle u-white">
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="u-form-group u-form-group-4">
+                                        <label for="text-5815" class="u-label u-text-body-alt-color u-label-4">Password</label>
+                                        <input placeholder="Introduza a Password" asp-for="Input.Password" class="u-input u-input-rectangle u-white">
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="u-form-group u-form-group-5">
+                                        <label for="text-fc12" class="u-label u-text-body-alt-color u-label-5">Confirmar a Password</label>
+                                        <input placeholder="Confirmar a Password" asp-for="Input.ConfirmPassword" class="u-input u-input-rectangle u-white" required="required">
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                    <div class="u-form-group u-form-select u-form-group-6">
+                                        <label for="select-5299" class="u-label u-text-body-alt-color u-label-6">Tipo de Utilizador</label>
+                                        <div class="u-form-select-wrapper">
+                                            <select asp-for="Input.Role" asp-items="ViewBag.role" class="u-input u-input-rectangle u-white">
+                                            </select>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                                        </div>
+                                    </div>
+                                    <div class="u-align-left u-form-group u-form-submit u-form-group-7">
+                                        <button type="submit" class="u-btn u-btn-submit u-button-style u-white u-btn-1">Registar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
