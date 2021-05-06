@@ -1,0 +1,17 @@
+﻿.menu-icon {
+    margin-left: 50px;
+    color: black;
+    width: auto;
+    margin-top:65px;
+}
+@media (max-width: 575px) {
+
+    .menu-icon {
+        display:none;
+    }
+    .u-image-1{
+        margin-left:40%;
+    }
+       
+
+}
