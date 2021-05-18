@@ -5,6 +5,6 @@ Para correr o programa é necessário adicionar na ferramenta secret manager os 
 Para finalizar e preciso criar um certificado autoassinado. Para completar esta tarefa siga os passos presentes no capitulo 4.2 do relatórino disponiblizado com a aplicação.
 
 
-Aplicação remota no google cloud platform:
+Aplicação (sem as funcionalidades do email) remota no google cloud platform:
 
 https://asminhasduvidas.ew.r.appspot.com
